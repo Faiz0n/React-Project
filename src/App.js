@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Routes,Route} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
 
@@ -52,7 +52,15 @@ componentWillUnmount(){
 <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/shop" element={<ShopPage/>} />
-        <Route path="/signin" element={<SignInAndSignUpPage/>} />
+        <Route exact path="/signin" 
+        element={
+          this.props.currentUser ? (
+        <Navigate replace to='/'/>
+        ) : (
+        <SignInAndSignUpPage/>
+        )
+        } 
+        />
 </Routes>
     </div>
   )
@@ -63,4 +71,10 @@ const mapDispatchToProps = dispatch =>({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App)
+const mapStateToProps = ({user}) =>({
+  currentUser: user.currentUser
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
