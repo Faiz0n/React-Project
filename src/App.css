@@ -11,3 +11,7 @@ a{
 *{
     box-sizing: border-box;
 }
+
+.checkout-Button{
+    margin: 20px auto;
+}
