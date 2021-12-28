@@ -55,7 +55,7 @@ componentWillUnmount(){
       <Header />
 <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/shop" element={<ShopPage/>} />
+        <Route path="/shop/*" element={<ShopPage/>} />
         <Route path="/checkout" element={<CheckoutPage/>}/>
         <Route exact path="/signin" 
         element={

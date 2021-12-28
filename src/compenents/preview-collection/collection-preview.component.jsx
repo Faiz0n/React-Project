@@ -9,7 +9,7 @@ const CollectionPreview = ({title, items}) =>(
         <h1 className='title'>{title.toUpperCase()}</h1>
         <div className = 'preview'>
             {items
-            .filter((item,indx)=> indx < 4)
+            .filter((item,indx)=> indx < 8)
             .map((item) =>(
                 <CollectionItem key={item.id} item={item}/>
             ))}
